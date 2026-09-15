@@ -1,0 +1,16 @@
+.git
+.gitignore
+.env
+.DS_Store
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+mlops/
+artifact/
+catboost_info/
+Notebook/catboost_info/
+*.egg-info/
