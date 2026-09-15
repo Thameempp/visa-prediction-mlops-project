@@ -214,3 +214,26 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# macOS
+.DS_Store
+
+# Local virtual environments
+mlops/
+
+# Project-generated artifacts
+artifact/
+artifacts/
+saved_models/
+data/
+catboost_info/
+Notebook/catboost_info/
+
+# Local notebooks/runtime clutter
+*.ipynb_checkpoints/
+
+# Local secrets and credentials
+*.pem
+*.key
+*.crt
+*.json.env
