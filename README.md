@@ -37,29 +37,32 @@ The pipeline uses applicant, employer, job, wage, and region details from the vi
 │   ├── pipeline/                  # Training and prediction pipelines
 │   └── utils/                     # Reusable utility functions
 ├── requirements.txt
+├── scripts/
+│   └── setup.sh                   # Recreates ignored local setup files/folders
 ├── setup.py
 └── Dockerfile
 ```
 
 ## Setup
 
-Create and activate a virtual environment:
+Run the setup script:
 
 ```bash
-python3 -m venv .venv
+bash scripts/setup.sh
+```
+
+This creates the ignored runtime folders, creates `.env` from `.env.example` if needed, creates a local `.venv`, and installs the Python dependencies.
+
+Activate the virtual environment:
+
+```bash
 source .venv/bin/activate
 ```
 
-Install dependencies:
+Update `.env` with your MongoDB connection string:
 
-```bash
-pip install -r requirements.txt
-```
-
-Set your MongoDB connection string:
-
-```bash
-export DB_URL="your_mongodb_connection_string"
+```text
+DB_URL=your_mongodb_connection_string
 ```
 
 ## Run Training
@@ -99,6 +102,7 @@ docker run -p 8000:8000 -e DB_URL="your_mongodb_connection_string" us-visa-predi
 ## Notes
 
 - Generated training outputs are ignored by Git: `artifact/`, `artifacts/`, `saved_models/`, and local data folders.
+- Ignored runtime folders and `.env` are recreated by `bash scripts/setup.sh`.
 - The dataset file is stored at `Notebook/Visadataset.csv`.
 - The training pipeline currently expects MongoDB to contain the `US_VISA.visa_data` collection.
 - The target column is `case_status`.
