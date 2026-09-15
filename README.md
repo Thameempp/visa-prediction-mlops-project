@@ -2,7 +2,7 @@
 
 This project builds an end-to-end machine learning pipeline for predicting US visa case status, such as whether an application is likely to be `Certified` or `Denied`.
 
-The pipeline uses applicant, employer, job, wage, and region details from the visa dataset, then trains a classification model that can be saved and reused for prediction.
+The pipeline uses applicant, employer, job, wage, and region details from the visa dataset, then trains a classification model that can be saved and reused for prediction. The source CSV is available at `Notebook/Visadataset.csv`.
 
 ## Project Features
 
@@ -23,7 +23,9 @@ The pipeline uses applicant, employer, job, wage, and region details from the vi
 ├── config/
 │   ├── model.yaml                 # Model search/config placeholder
 │   └── schema.yaml                # Dataset schema
-├── Notebook/                      # EDA and experiment notebooks
+├── Notebook/
+│   ├── Visadataset.csv            # Source visa dataset
+│   └── *.ipynb                    # EDA and experiment notebooks
 ├── src/us_visa/
 │   ├── components/                # ML pipeline components
 │   ├── configuration/             # MongoDB connection
@@ -97,5 +99,6 @@ docker run -p 8000:8000 -e DB_URL="your_mongodb_connection_string" us-visa-predi
 ## Notes
 
 - Generated training outputs are ignored by Git: `artifact/`, `artifacts/`, `saved_models/`, and local data folders.
-- The project expects MongoDB to contain the `US_VISA.visa_data` collection.
+- The dataset file is stored at `Notebook/Visadataset.csv`.
+- The training pipeline currently expects MongoDB to contain the `US_VISA.visa_data` collection.
 - The target column is `case_status`.
